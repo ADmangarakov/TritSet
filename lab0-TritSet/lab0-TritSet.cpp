@@ -4,8 +4,14 @@
 #include "pch.h"
 #include <iostream>
 
+#include "TritSet.h"
+
 int main()
 {
+	TritSet set(1000);
+
+	size_t allocLength = set.capacity();
+
     std::cout << "Hello World!\n"; 
 }
 
