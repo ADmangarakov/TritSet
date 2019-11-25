@@ -75,7 +75,7 @@ void ProxyTrit::operator=(Trit value)
 }
 
 
-bool ProxyTrit::operator==(ProxyTrit set) const
+bool ProxyTrit::operator==(ProxyTrit const & set) const
 {
 	uint value1, value2;
 
@@ -90,7 +90,7 @@ bool ProxyTrit::operator==(Trit value) const
 }
 
 
-bool ProxyTrit::operator!=(ProxyTrit value) const
+bool ProxyTrit::operator!=(ProxyTrit const& value) const
 {
 	return !(this->operator==(value));
 }

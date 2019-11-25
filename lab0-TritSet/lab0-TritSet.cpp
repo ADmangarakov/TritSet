@@ -10,12 +10,11 @@
 int main()
 {
 	TritSet setA(100);
-	for (size_t i = 0; i < 40; i++)
-		setA[i] = True;
-	for (size_t i = 60; i < 90; i++)
-		setA[i] = False;
-	assert(setA.cardianlity(False) == 30);
-	assert(setA.cardianlity(Unknown) == 20);
-	assert(setA.cardianlity(True) == 40);
+	setA.setRand();
+	TritSet setB = setA;
+	assert(setA.capacity() == setB.capacity());
+	for (int i = 0; i < setB.capacity(); i++) {
+		bool t = setA[i] == setB[i];
+	}
 	return 0;
 }

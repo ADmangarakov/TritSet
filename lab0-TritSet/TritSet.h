@@ -5,9 +5,8 @@
 
 typedef unsigned uint;
 
-class TritSet
+struct TritSet
 {
-public:
 	explicit TritSet(size_t capacity);
 	TritSet(TritSet const& set);
 	TritSet(ProxyTrit const& set);

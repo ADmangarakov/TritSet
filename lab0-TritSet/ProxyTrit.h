@@ -8,21 +8,12 @@ typedef unsigned uint;
 
 class ProxyTrit
 {
-public:
+	friend struct TritSet;
 	size_t index_; // index of trit	
 
 	explicit ProxyTrit(size_t size);
 	ProxyTrit(ProxyTrit const& set);
 	ProxyTrit& operator=(ProxyTrit const& set);
-
-	void operator=(Trit value);
-	bool operator==(ProxyTrit value) const;
-	bool operator==(Trit value) const;
-	bool operator!=(ProxyTrit value) const;
-	ProxyTrit operator|(ProxyTrit const& A) const;
-	ProxyTrit operator&(ProxyTrit const& A) const;
-	ProxyTrit operator~() const;
-
 	size_t capacity() const { return calcArrSize(capacity_)-1; }
 	size_t cardianlity(Trit value) const;
 	std::unordered_map< Trit, int, std::hash<int> > cardinality() const;
@@ -33,9 +24,7 @@ public:
 
 	void trim(size_t lastIndex) { resizeTrit(lastIndex); }
 	void setRand();
-	~ProxyTrit() { delete[] tritSet_; }
 
-private:
 	Trit getValue(size_t const index) const;
 	void copyTrit(const ProxyTrit & set);
 	void updCountTF(size_t &curVal);
@@ -51,6 +40,16 @@ private:
 	size_t countTrue_; // how much True val in array
 	size_t countFalse_; // how much False val in array
 	size_t ind_last_notional_; // index of last non-unknown value
+
+public:
+	void operator=(Trit value);
+	bool operator==(ProxyTrit const& value) const;
+	bool operator==(Trit value) const;
+	bool operator!=(ProxyTrit const& value) const;
+	ProxyTrit operator|(ProxyTrit const& A) const;
+	ProxyTrit operator&(ProxyTrit const& A) const;
+	ProxyTrit operator~() const;
+	~ProxyTrit() { delete[] tritSet_; }
 };
 
 void calcTritPalce(size_t & arrayElem, size_t & posInUint, uint & mask, size_t const index);
